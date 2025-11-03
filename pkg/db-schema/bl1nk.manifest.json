@@ -1,0 +1,6 @@
+{
+  "priority": 2.4,
+  "purpose": "พิมพ์เขียวข้อมูล: Database Schema (R_DATA_001)",
+  "ruleset": "24-DB-SCHEMA",
+  "dependencies": []
+}

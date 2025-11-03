@@ -1,0 +1,6 @@
+{
+  "priority": 3.4,
+  "purpose": "Dashboard/WebApp. (R_LOGIC_002)",
+  "ruleset": "34-CLIENT-WEB",
+  "dependencies": [ "pkg:core-types", "pkg:ui-components", "app:server-trpc" ]
+}

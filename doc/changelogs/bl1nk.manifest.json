@@ -1,0 +1,6 @@
+{
+  "priority": 4.3,
+  "purpose": "เก็บ Changelogs ตาม Event (R_DOC_003)",
+  "ruleset": "43-DOC-CHANGELOGS",
+  "dependencies": []
+}

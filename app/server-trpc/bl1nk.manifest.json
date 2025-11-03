@@ -1,0 +1,6 @@
+{
+  "priority": 3.2,
+  "purpose": "Backend หลัก. จัดการ User/Project/Agent CRUD",
+  "ruleset": "32-SERVER-TRPC",
+  "dependencies": [ "pkg:core-types", "pkg:db-schema", "app:server-proxy" ]
+}

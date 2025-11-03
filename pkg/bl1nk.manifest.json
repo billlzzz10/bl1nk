@@ -1,0 +1,7 @@
+{
+  "priority": 2.0,
+  "owner": "@[TeamID]",
+  "purpose": "Core Logic (Proprietary/Closed). 'Lego' ที่ต้อง Publish (R_PKG_001)",
+  "ruleset": "2-PKG-SHARED",
+  "dependencies": []
+}

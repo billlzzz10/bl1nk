@@ -1,0 +1,7 @@
+{
+  "priority": 0.0,
+  "owner": "@[TeamID]",
+  "purpose": "เก็บ 'กฎ' ที่เป็น Source of Truth ทั้งหมด (ไฟล์ MDC สำหรับ Agent Rules)",
+  "ruleset": "0-META-RULES",
+  "dependencies": []
+}

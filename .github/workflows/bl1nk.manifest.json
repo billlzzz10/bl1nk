@@ -1,0 +1,6 @@
+{
+  "priority": 1.1,
+  "purpose": "GitHub Actions workflow ที่บังคับใช้ Ruleset V7 ทั้งหมด",
+  "ruleset": "11-CI-CD-V7",
+  "dependencies": []
+}

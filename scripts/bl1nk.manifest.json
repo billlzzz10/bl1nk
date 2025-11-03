@@ -1,0 +1,7 @@
+{
+  "priority": 1.0,
+  "owner": "@[TeamID]",
+  "purpose": "The Workflow Enforcer. บังคับใช้ Manifest และสร้าง Artifacts (R_ARTIFACT_001)",
+  "ruleset": "1-WORKFLOW-ENFORCER",
+  "dependencies": []
+}

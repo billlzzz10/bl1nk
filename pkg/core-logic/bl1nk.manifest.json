@@ -1,0 +1,6 @@
+{
+  "priority": 2.1,
+  "purpose": "สมองส่วนกลาง: Core Business Logic (เช่น Proxy Logic)",
+  "ruleset": "21-LOGIC-PROXY",
+  "dependencies": []
+}

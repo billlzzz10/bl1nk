@@ -1,0 +1,6 @@
+{
+  "priority": 4.2,
+  "purpose": "เอกสาร API ที่ Generate อัตโนมัติจาก L3 applications",
+  "ruleset": "42-DOC-APP",
+  "dependencies": []
+}

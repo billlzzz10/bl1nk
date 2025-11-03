@@ -1,0 +1,6 @@
+{
+  "priority": 3.5,
+  "purpose": "CLI Interface",
+  "ruleset": "35-CLIENT-CLI",
+  "dependencies": [ "pkg:core-logic", "app:server-trpc" ]
+}

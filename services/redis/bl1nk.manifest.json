@@ -1,0 +1,6 @@
+{
+  "priority": 5.1,
+  "purpose": "Redis service สำหรับ caching และ pub/sub",
+  "ruleset": "51-SERVICE-REDIS",
+  "dependencies": []
+}

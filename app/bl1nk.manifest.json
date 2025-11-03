@@ -1,0 +1,7 @@
+{
+  "priority": 3.0,
+  "owner": "@[TeamID]",
+  "purpose": "Services/Applications. ส่วนที่ 'ประกอบ' (Assemble) Logic จาก pkg/ (R_PKG_002)",
+  "ruleset": "3-APP-SHARED",
+  "dependencies": []
+}

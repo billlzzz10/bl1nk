@@ -1,0 +1,6 @@
+{
+  "priority": 3.3,
+  "purpose": "Client หลัก (VS Code Extension). (R_DEV_003)",
+  "ruleset": "33-CLIENT-VSCODE",
+  "dependencies": [ "pkg:core-types", "pkg:ui-components", "app:server-trpc" ]
+}

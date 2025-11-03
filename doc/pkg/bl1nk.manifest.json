@@ -1,0 +1,6 @@
+{
+  "priority": 4.1,
+  "purpose": "เอกสารที่ Generate อัตโนมัติจาก L3 packages",
+  "ruleset": "41-DOC-PKG",
+  "dependencies": []
+}

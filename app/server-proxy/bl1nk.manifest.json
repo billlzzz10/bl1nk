@@ -1,0 +1,6 @@
+{
+  "priority": 3.1,
+  "purpose": "AI Gateway. จัดการ Caching (R_LOGIC_001)",
+  "ruleset": "31-SERVER-PROXY",
+  "dependencies": [ "pkg:core-logic", "pkg:db-schema", "services:redis", "services:qdrant" ]
+}

@@ -1,0 +1,7 @@
+{
+  "priority": 4.0,
+  "owner": "@[TeamID]",
+  "purpose": "ระบบเอกสารอัตโนมัติ (R_DOC_001, 002, 003)",
+  "ruleset": "4-DOC-GEN",
+  "dependencies": []
+}
