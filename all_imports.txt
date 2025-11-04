@@ -1,0 +1,171 @@
+pkg/db-schema/local_storage_adapter.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_page.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide QuoteBlockKeys;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/outline/outline_block_component.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/migration/editor_migration.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/toggle/toggle_block_component.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/mention/mention_page_block.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/actions/option/turn_into_option_action.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/actions/option/option_actions.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/actions/option/option_actions.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/actions/drag_to_reorder/util.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/actions/block_action_option_cubit.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/callout/callout_block_component.dart:import 'package:appflowy/generated/locale_keys.g.dart' show LocaleKeys;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/callout/callout_block_component.dart:import 'package:easy_localization/easy_localization.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/callout/callout_block_component.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/file/file_util.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/file/file_util.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/link_preview/link_parsers/youtube_parser.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/link_preview/link_parsers/default_parser.dart:import 'package:html/parser.dart' as html_parser;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/link_preview/link_parsers/default_parser.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/copy_and_paste/paste_from_image.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/copy_and_paste/custom_paste_command.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/copy_and_paste/paste_from_html.dart:import 'package:html2md/html2md.dart' as html2md;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/multi_image_block_component/layouts/multi_image_layouts.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ResizableImage;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/multi_image_block_component/multi_image_menu.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/multi_image_block_component/multi_image_menu.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/multi_image_block_component/multi_image_placeholder.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/multi_image_block_component/multi_image_placeholder.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/image_placeholder.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/image_placeholder.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/image_util.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/upload_image_menu/upload_image_menu.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ColorOption;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/image/custom_image_block_component/custom_image_block_component.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ResizableImage;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/parsers/database_node_parser.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/parsers/custom_image_node_parser.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/parsers/markdown_simple_table_parser.dart:import 'package:markdown/markdown.dart' as md;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/parsers/markdown_code_parser.dart:import 'package:markdown/markdown.dart' as md;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/header/custom_cover_picker_bloc.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/header/custom_cover_picker_bloc.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/header/document_cover_widget.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/mobile_toolbar_v3/aa_menu/_block_items.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/mobile_toolbar_v3/add_block_menu_item_builder.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/toolbar_item/text_suggestions_toolbar_item.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/toolbar_item/custom_text_color_toolbar_item.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ColorPicker;
+pkg/core-logic/plugin_registry/document/presentation/editor_plugins/toolbar_item/custom_hightlight_color_toolbar_item.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ColorPicker;
+pkg/core-logic/plugin_registry/document/presentation/editor_configuration.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/presentation/editor_configuration.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/document/application/document_bloc.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/document/application/document_data_pb_extension.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/trash/src/trash_cell.dart:import 'package:fixnum/fixnum.dart' as $fixnum;
+pkg/core-logic/plugin_registry/database/board/tests/integrate_test/card_test.dart:// import 'package:appflowy/main.dart' as app;
+pkg/core-logic/plugin_registry/database/board/presentation/board_page.dart:import 'package:flutter/material.dart' hide Card;
+pkg/core-logic/plugin_registry/database/board/application/board_bloc.dart:import 'package:protobuf/protobuf.dart' hide FieldInfo;
+pkg/core-logic/plugin_registry/database/widgets/group/database_group.dart:import 'package:protobuf/protobuf.dart' hide FieldInfo;
+pkg/core-logic/plugin_registry/database/widgets/row/row_banner.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/database/domain/filter_service.dart:import 'package:fixnum/fixnum.dart' as $fixnum;
+pkg/core-logic/plugin_registry/database/application/cell/bloc/date_cell_editor_bloc.dart:import 'package:easy_localization/easy_localization.dart'
+pkg/core-logic/plugin_registry/database/application/cell/bloc/date_cell_editor_bloc.dart:import 'package:protobuf/protobuf.dart' hide FieldInfo;
+pkg/core-logic/plugin_registry/ai_chat/presentation/animated_chat_list_reversed.dart:import 'package:diffutil_dart/diffutil.dart' as diffutil;
+pkg/core-logic/plugin_registry/ai_chat/presentation/animated_chat_list.dart:import 'package:diffutil_dart/diffutil.dart' as diffutil;
+pkg/core-logic/plugin_registry/ai_chat/presentation/chat_page/load_chat_message_status_ready.dart:import 'package:flutter_chat_ui/flutter_chat_ui.dart' hide ChatMessage;
+pkg/core-logic/plugin_registry/ai_chat/application/chat_entity.dart:import 'package:path/path.dart' as path;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_page.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide QuoteBlockKeys;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/outline/outline_block_component.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/migration/editor_migration.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/toggle/toggle_block_component.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/mention/mention_page_block.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/actions/option/turn_into_option_action.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/actions/option/option_actions.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/actions/option/option_actions.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/actions/drag_to_reorder/util.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/actions/block_action_option_cubit.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/callout/callout_block_component.dart:import 'package:appflowy/generated/locale_keys.g.dart' show LocaleKeys;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/callout/callout_block_component.dart:import 'package:easy_localization/easy_localization.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/callout/callout_block_component.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/file/file_util.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/file/file_util.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/link_preview/link_parsers/youtube_parser.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/link_preview/link_parsers/default_parser.dart:import 'package:html/parser.dart' as html_parser;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/link_preview/link_parsers/default_parser.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/copy_and_paste/paste_from_image.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/copy_and_paste/custom_paste_command.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/copy_and_paste/paste_from_html.dart:import 'package:html2md/html2md.dart' as html2md;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/multi_image_block_component/layouts/multi_image_layouts.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ResizableImage;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/multi_image_block_component/multi_image_menu.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/multi_image_block_component/multi_image_menu.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/multi_image_block_component/multi_image_placeholder.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/multi_image_block_component/multi_image_placeholder.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/image_placeholder.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/image_placeholder.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/image_util.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/upload_image_menu/upload_image_menu.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ColorOption;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/image/custom_image_block_component/custom_image_block_component.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ResizableImage;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/parsers/database_node_parser.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/parsers/custom_image_node_parser.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/parsers/markdown_simple_table_parser.dart:import 'package:markdown/markdown.dart' as md;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/parsers/markdown_code_parser.dart:import 'package:markdown/markdown.dart' as md;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/header/custom_cover_picker_bloc.dart:import 'package:http/http.dart' as http;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/header/custom_cover_picker_bloc.dart:import 'package:path/path.dart' as p;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/header/document_cover_widget.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/mobile_toolbar_v3/aa_menu/_block_items.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/mobile_toolbar_v3/add_block_menu_item_builder.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/toolbar_item/text_suggestions_toolbar_item.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/toolbar_item/custom_text_color_toolbar_item.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ColorPicker;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_plugins/toolbar_item/custom_hightlight_color_toolbar_item.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide ColorPicker;
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_configuration.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/presentation/editor_configuration.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+pkg/core-logic/plugin_registry/plugins/document/application/document_bloc.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/document/application/document_data_pb_extension.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+pkg/core-logic/plugin_registry/plugins/trash/src/trash_cell.dart:import 'package:fixnum/fixnum.dart' as $fixnum;
+pkg/core-logic/plugin_registry/plugins/database/board/tests/integrate_test/card_test.dart:// import 'package:appflowy/main.dart' as app;
+pkg/core-logic/plugin_registry/plugins/database/board/presentation/board_page.dart:import 'package:flutter/material.dart' hide Card;
+pkg/core-logic/plugin_registry/plugins/database/board/application/board_bloc.dart:import 'package:protobuf/protobuf.dart' hide FieldInfo;
+pkg/core-logic/plugin_registry/plugins/database/widgets/group/database_group.dart:import 'package:protobuf/protobuf.dart' hide FieldInfo;
+pkg/core-logic/plugin_registry/plugins/database/widgets/row/row_banner.dart:import 'package:appflowy_editor/appflowy_editor.dart' hide UploadImageMenu;
+pkg/core-logic/plugin_registry/plugins/database/domain/filter_service.dart:import 'package:fixnum/fixnum.dart' as $fixnum;
+pkg/core-logic/plugin_registry/plugins/database/application/cell/bloc/date_cell_editor_bloc.dart:import 'package:easy_localization/easy_localization.dart'
+pkg/core-logic/plugin_registry/plugins/database/application/cell/bloc/date_cell_editor_bloc.dart:import 'package:protobuf/protobuf.dart' hide FieldInfo;
+pkg/core-logic/plugin_registry/plugins/ai_chat/presentation/animated_chat_list_reversed.dart:import 'package:diffutil_dart/diffutil.dart' as diffutil;
+pkg/core-logic/plugin_registry/plugins/ai_chat/presentation/animated_chat_list.dart:import 'package:diffutil_dart/diffutil.dart' as diffutil;
+pkg/core-logic/plugin_registry/plugins/ai_chat/presentation/chat_page/load_chat_message_status_ready.dart:import 'package:flutter_chat_ui/flutter_chat_ui.dart' hide ChatMessage;
+pkg/core-logic/plugin_registry/plugins/ai_chat/application/chat_entity.dart:import 'package:path/path.dart' as path;
+pkg/core-logic/plugin_registry/plugins/shared/share/share_menu.dart:import 'package:appflowy/features/share_tab/presentation/share_tab.dart'
+pkg/core-logic/plugin_registry/plugins/shared/share/share_menu.dart:import 'package:appflowy/plugins/shared/share/share_tab.dart' as share_plugin;
+pkg/core-logic/plugin_registry/shared/share/share_menu.dart:import 'package:appflowy/features/share_tab/presentation/share_tab.dart'
+pkg/core-logic/plugin_registry/shared/share/share_menu.dart:import 'package:appflowy/plugins/shared/share/share_tab.dart' as share_plugin;
+app/client-web/workspace_manager/workspace/presentation/settings/widgets/files/settings_file_exporter_widget.dart:import 'package:path/path.dart' as p;
+app/client-web/workspace_manager/workspace/presentation/settings/widgets/members/invitation/member_http_service.dart:import 'package:http/http.dart' as http;
+app/client-web/workspace_manager/workspace/presentation/settings/pages/sites/settings_sites_bloc.dart:import 'package:protobuf/protobuf.dart' hide FieldInfo;
+app/client-web/workspace_manager/workspace/presentation/widgets/view_title_bar.dart:import 'package:appflowy_backend/protobuf/flowy-folder/view.pb.dart'
+app/client-web/workspace_manager/workspace/presentation/widgets/image_viewer/interactive_image_toolbar.dart:import 'package:http/http.dart' as http;
+app/client-web/workspace_manager/workspace/presentation/home/menu/sidebar/sidebar.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/workspace/presentation/home/menu/sidebar/space/sidebar_space_header.dart:import 'package:flutter/material.dart' hide Icon;
+app/client-web/workspace_manager/workspace/presentation/home/menu/sidebar/space/sidebar_space.dart:import 'package:appflowy_backend/protobuf/flowy-folder/view.pb.dart'
+app/client-web/workspace_manager/workspace/presentation/home/menu/sidebar/space/space_icon_popup.dart:import 'package:flutter/material.dart' hide Icon;
+app/client-web/workspace_manager/workspace/presentation/home/menu/sidebar/import/import_panel.dart:import 'package:path/path.dart' as p;
+app/client-web/workspace_manager/workspace/presentation/home/menu/sidebar/header/sidebar_user.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/workspace/presentation/home/desktop_home_screen.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/workspace/presentation/command_palette/widgets/search_summary_cell.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+app/client-web/workspace_manager/workspace/presentation/command_palette/widgets/page_preview.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+app/client-web/workspace_manager/workspace/application/settings/application_data_storage.dart:import 'package:path/path.dart' as p;
+app/client-web/workspace_manager/workspace/application/settings/shortcuts/settings_shortcuts_service.dart:import 'package:path/path.dart' as p;
+app/client-web/workspace_manager/workspace/application/settings/appearance/appearance_cubit.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+app/client-web/workspace_manager/workspace/application/workspace/workspace_sections_listener.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/workspace/application/workspace/workspace_listener.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/workspace/application/workspace/workspace_service.dart:import 'package:fixnum/fixnum.dart' as fixnum;
+app/client-web/workspace_manager/workspace/application/home/home_bloc.dart:import 'package:appflowy_backend/protobuf/flowy-folder/workspace.pb.dart'
+app/client-web/workspace_manager/workspace/application/home/home_setting_bloc.dart:import 'package:appflowy_backend/protobuf/flowy-folder/workspace.pb.dart'
+app/client-web/workspace_manager/workspace/application/sidebar/space/space_bloc.dart:import 'package:appflowy_backend/protobuf/flowy-folder/view.pb.dart'
+app/client-web/workspace_manager/presentation/settings/widgets/files/settings_file_exporter_widget.dart:import 'package:path/path.dart' as p;
+app/client-web/workspace_manager/presentation/settings/widgets/members/invitation/member_http_service.dart:import 'package:http/http.dart' as http;
+app/client-web/workspace_manager/presentation/settings/pages/sites/settings_sites_bloc.dart:import 'package:protobuf/protobuf.dart' hide FieldInfo;
+app/client-web/workspace_manager/presentation/widgets/view_title_bar.dart:import 'package:appflowy_backend/protobuf/flowy-folder/view.pb.dart'
+app/client-web/workspace_manager/presentation/widgets/image_viewer/interactive_image_toolbar.dart:import 'package:http/http.dart' as http;
+app/client-web/workspace_manager/presentation/home/menu/sidebar/sidebar.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/presentation/home/menu/sidebar/space/sidebar_space_header.dart:import 'package:flutter/material.dart' hide Icon;
+app/client-web/workspace_manager/presentation/home/menu/sidebar/space/sidebar_space.dart:import 'package:appflowy_backend/protobuf/flowy-folder/view.pb.dart'
+app/client-web/workspace_manager/presentation/home/menu/sidebar/space/space_icon_popup.dart:import 'package:flutter/material.dart' hide Icon;
+app/client-web/workspace_manager/presentation/home/menu/sidebar/import/import_panel.dart:import 'package:path/path.dart' as p;
+app/client-web/workspace_manager/presentation/home/menu/sidebar/header/sidebar_user.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/presentation/home/desktop_home_screen.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/presentation/command_palette/widgets/search_summary_cell.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+app/client-web/workspace_manager/presentation/command_palette/widgets/page_preview.dart:import 'package:easy_localization/easy_localization.dart' hide TextDirection;
+app/client-web/workspace_manager/application/settings/application_data_storage.dart:import 'package:path/path.dart' as p;
+app/client-web/workspace_manager/application/settings/shortcuts/settings_shortcuts_service.dart:import 'package:path/path.dart' as p;
+app/client-web/workspace_manager/application/settings/appearance/appearance_cubit.dart:import 'package:appflowy_editor/appflowy_editor.dart'
+app/client-web/workspace_manager/application/workspace/workspace_sections_listener.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/application/workspace/workspace_listener.dart:import 'package:appflowy_backend/protobuf/flowy-user/protobuf.dart'
+app/client-web/workspace_manager/application/workspace/workspace_service.dart:import 'package:fixnum/fixnum.dart' as fixnum;
+app/client-web/workspace_manager/application/home/home_bloc.dart:import 'package:appflowy_backend/protobuf/flowy-folder/workspace.pb.dart'
+app/client-web/workspace_manager/application/home/home_setting_bloc.dart:import 'package:appflowy_backend/protobuf/flowy-folder/workspace.pb.dart'
+app/client-web/workspace_manager/application/sidebar/space/space_bloc.dart:import 'package:appflowy_backend/protobuf/flowy-folder/view.pb.dart'
