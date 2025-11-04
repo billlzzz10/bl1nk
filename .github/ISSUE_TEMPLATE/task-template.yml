@@ -1,0 +1,32 @@
+name: Task Template
+description: Create a new task from the task list
+title: "[Task] {{ Title }}"
+labels: ["task"]
+body:
+  - type: input
+    id: task_id
+    attributes:
+      label: Task ID
+      description: รหัสงาน (อ้างจาก TaskID)
+  - type: input
+    id: phase
+    attributes:
+      label: Phase
+  - type: textarea
+    id: description
+    attributes:
+      label: รายละเอียด
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options: ["1.0", "2.0", "3.0"]
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options: ["Pending", "In Progress", "Completed"]
+  - type: input
+    id: ruleset
+    attributes:
+      label: RulesetLink
