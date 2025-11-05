@@ -37,3 +37,38 @@ if (enableShare) {
   });
 }
 
+// --- Chat preview parity (disabled by default; flag unlocks basic local echo) ---
+const chatBox = document.getElementById('chatBox') as HTMLDivElement;
+const chatInput = document.getElementById('chatInput') as HTMLInputElement;
+const chatSend = document.getElementById('chatSend') as HTMLButtonElement;
+
+const enableChat = !!window.bl1nk?.flags.ENABLE_CHAT_UI;
+
+function addMessage(role: 'user' | 'assistant', text: string) {
+  const row = document.createElement('div');
+  row.style.margin = '6px 0';
+  row.innerHTML = `<strong>${role}:</strong> ${text}`;
+  chatBox.appendChild(row);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+if (enableChat) {
+  chatInput.disabled = false;
+  chatInput.title = '';
+  chatSend.disabled = false;
+  chatSend.title = '';
+
+  chatSend.addEventListener('click', () => {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    addMessage('user', text);
+    // Placeholder assistant echo to mimic basic behavior; no backend wiring yet
+    setTimeout(() => addMessage('assistant', `Echo: ${text}`), 200);
+    chatInput.value = '';
+    chatInput.focus();
+  });
+
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') chatSend.click();
+  });
+}

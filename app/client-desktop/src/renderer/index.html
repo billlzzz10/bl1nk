@@ -32,8 +32,17 @@
       <h1>Welcome</h1>
       <p>Windows Desktop MVP. Feature parity with Flutter: Share button shows as disabled by default; enable menu via flag.</p>
       <pre>ENABLE_SHARE_UI=true</pre>
+
+      <section id="chat" style="margin-top:24px;">
+        <h2>AI Chat (Preview)</h2>
+        <div id="chatBox" style="border:1px solid #e2e8f0; border-radius:8px; height:280px; padding:8px; overflow:auto; background:#fafafa;"></div>
+        <div style="margin-top:8px; display:flex; gap:8px;">
+          <input id="chatInput" type="text" placeholder="Type a message" style="flex:1; padding:8px; border-radius:8px; border:1px solid #cbd5e1;" disabled title="Coming soon" />
+          <button id="chatSend" class="primary" disabled title="Coming soon">Send</button>
+        </div>
+        <small>Set <code>ENABLE_CHAT_UI=true</code> to enable local send (placeholder).</small>
+      </section>
     </main>
     <script src="renderer.js" type="module"></script>
   </body>
   </html>
-

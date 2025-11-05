@@ -139,8 +139,8 @@ cd app/client-desktop
 npm install
 
 # พัฒนา (watch + auto-reload)
-# เปิดเมนู Share ชั่วคราวด้วยแฟลก (ทางเลือก)
-cross-env ENABLE_SHARE_UI=true npm run dev
+# เปิดเมนู Share/Chat ชั่วคราวด้วยแฟลก (ทางเลือก)
+cross-env ENABLE_SHARE_UI=true ENABLE_CHAT_UI=true npm run dev
 
 # สร้างไฟล์ build TypeScript
 npm run build
