@@ -1,120 +1,53 @@
-import '../../../../../appflowy/features/share_tab/data/models/models.dart';
-import '../../../../../appflowy/features/share_tab/logic/share_tab_bloc.dart';
-import '../../../../../appflowy/features/workspace/logic/workspace_bloc.dart';
-import '../../../../../appflowy/generated/locale_keys.g.dart';
-import '../../../../../appflowy/plugins/database/application/tab_bar_bloc.dart';
-import '../../../../../appflowy/plugins/shared/share/share_bloc.dart';
-import '../../../../../appflowy/plugins/shared/share/share_menu.dart';
-import '../../../../../appflowy_ui/appflowy_ui.dart';
-import '../../../../../easy_localization/easy_localization.dart';
-import '../../../../../flutter/material.dart';
-import '../../../../../flutter_bloc/flutter_bloc.dart';
-import '../../../../../provider/provider.dart';
+import '../../../../flutter/material.dart';
 
-class ShareMenuButton extends StatefulWidget {
-  const ShareMenuButton({
-    super.key,
-    required this.tabs,
-  });
+// Feature flag to toggle Share UI while decoupling proceeds.
+// Enable via: --dart-define=ENABLE_SHARE_UI=true
+const bool kEnableShareUi = bool.fromEnvironment(
+  'ENABLE_SHARE_UI',
+  defaultValue: false,
+);
 
-  final List<ShareMenuTab> tabs;
-
-  @override
-  State<ShareMenuButton> createState() => _ShareMenuButtonState();
-}
-
-class _ShareMenuButtonState extends State<ShareMenuButton> {
-  final popoverController = AFPopoverController();
-  final popoverGroupId = SharePopoverGroupId();
-
-  @override
-  void initState() {
-    super.initState();
-
-    popoverController.addListener(() {
-      if (context.mounted && popoverController.isOpen) {
-        context.read<ShareBloc>().add(const ShareEvent.updatePublishStatus());
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    popoverController.dispose();
-    super.dispose();
-  }
+/// ShareMenuButton (temporary)
+/// TODO(P0): Restore full Share menu (filled button + popover, actions: Share/Export/Publish)
+/// Relates-to: #7 (decouple AppFlowy). If no tracking issue exists, create one: "Restore ShareMenuButton".
+class ShareMenuButton extends StatelessWidget {
+  const ShareMenuButton({super.key, this.tabs = const []});
+  final List<dynamic> tabs; // kept for API compatibility
 
   @override
   Widget build(BuildContext context) {
-    final shareBloc = context.read<ShareBloc>();
-    final databaseBloc = context.read<DatabaseTabBarBloc?>();
-    final userWorkspaceBloc = context.read<UserWorkspaceBloc>();
-    final shareWithUserBloc = context.read<ShareTabBloc>();
-    // final animationDuration = const Duration(milliseconds: 120);
-
-    return BlocBuilder<ShareBloc, ShareState>(
-      builder: (context, state) {
-        return AFPopover(
-          controller: popoverController,
-          groupId: popoverGroupId,
-          anchor: AFAnchorAuto(
-            offset: const Offset(-176, 12),
+    if (kEnableShareUi) {
+      return PopupMenuButton<String>(
+        onSelected: (value) {
+          // Temporary no-op; surface feedback to avoid confusion
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('$value: Coming soon')),
+          );
+        },
+        itemBuilder: (context) => const [
+          PopupMenuItem(value: 'Share', child: Text('Share')),
+          PopupMenuItem(value: 'Export', child: Text('Export')),
+          PopupMenuItem(value: 'Publish', child: Text('Publish')),
+        ],
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 4.0),
+          child: FilledButton.icon(
+            onPressed: null, // handled by PopupMenuButton
+            icon: Icon(Icons.ios_share),
+            label: Text('Share'),
           ),
-          // Enable animation
-          // effects: [
-          //   FadeEffect(duration: animationDuration),
-          //   ScaleEffect(
-          //     duration: animationDuration,
-          //     begin: Offset(0.95, 0.95),
-          //     end: Offset(1, 1),
-          //     alignment: Alignment.topRight,
-          //   ),
-          //   MoveEffect(
-          //     duration: animationDuration,
-          //     begin: Offset(20, -20),
-          //     end: Offset(0, 0),
-          //     curve: Curves.easeOutQuad,
-          //   ),
-          // ],
-          popover: (_) {
-            return ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 460,
-              ),
-              child: MultiBlocProvider(
-                providers: [
-                  if (databaseBloc != null)
-                    BlocProvider.value(
-                      value: databaseBloc,
-                    ),
-                  BlocProvider.value(value: shareBloc),
-                  BlocProvider.value(value: userWorkspaceBloc),
-                  BlocProvider.value(value: shareWithUserBloc),
-                ],
-                child: Provider.value(
-                  value: popoverGroupId,
-                  child: ShareMenu(
-                    tabs: widget.tabs,
-                    viewName: state.viewName,
-                    onClose: () {
-                      popoverController.hide();
-                    },
-                  ),
-                ),
-              ),
-            );
-          },
-          child: AFFilledTextButton.primary(
-            text: LocaleKeys.shareAction_buttonText.tr(),
-            onTap: () {
-              popoverController.show();
+        ),
+      );
+    }
 
-              /// Fetch the shared users when the popover is shown
-              context.read<ShareTabBloc>().add(ShareTabEvent.loadSharedUsers());
-            },
-          ),
-        );
-      },
+    // Default: show disabled button to preserve layout and inform users
+    return const Tooltip(
+      message: 'Coming soon',
+      child: FilledButton.icon(
+        onPressed: null, // disabled
+        icon: Icon(Icons.ios_share),
+        label: Text('Share'),
+      ),
     );
   }
 }

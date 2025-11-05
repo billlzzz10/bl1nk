@@ -1,26 +1,31 @@
 import 'dart:convert';
 
-import '../../../../../../appflowy/plugins/ai_chat/application/chat_entity.dart';
-import '../../../../../../appflowy/workspace/application/view/view_ext.dart';
-import '../../../../../../appflowy_backend/dispatch/dispatch.dart';
-import '../../../../../../appflowy_backend/log.dart';
-import '../../../../../../appflowy_backend/protobuf/flowy-ai/protobuf.dart';
-import '../../../../../../appflowy_backend/protobuf/flowy-document/entities.pb.dart';
-import '../../../../../../appflowy_backend/protobuf/flowy-folder/protobuf.dart';
-import '../../../../../../appflowy_result/appflowy_result.dart';
-import '../../../../../../nanoid/nanoid.dart';
+import 'chat_entity.dart';
 
-/// Indicate file source from appflowy document
 const appflowySource = "appflowy";
 
-List<ChatFile> fileListFromMessageMetadata(
-  Map<String, dynamic>? map,
-) {
+class ChatMessageMeta {
+  const ChatMessageMeta({
+    required this.id,
+    required this.name,
+    required this.data,
+    required this.loaderType,
+    required this.source,
+  });
+
+  final String id;
+  final String name;
+  final String data;
+  final ContextLoaderType loaderType;
+  final String source;
+}
+
+List<ChatFile> fileListFromMessageMetadata(Map<String, dynamic>? map) {
   final List<ChatFile> metadata = [];
   if (map != null) {
     for (final entry in map.entries) {
       if (entry.value is ChatFile) {
-        metadata.add(entry.value);
+        metadata.add(entry.value as ChatFile);
       }
     }
   }
@@ -49,7 +54,6 @@ List<ChatFile> chatFilesFromMetadataString(String? s) {
         .cast<ChatFile>()
         .toList();
   } else {
-    Log.error("Invalid metadata: $metadataJson");
     return [];
   }
 }
@@ -94,8 +98,6 @@ MetadataCollection parseMetadata(String? s) {
         progress = AIChatProgress.fromJson(map);
       } else if (map.containsKey("id") && map["id"] != null) {
         metadata.add(ChatMessageRefSource.fromJson(map));
-      } else {
-        Log.info("Unsupported metadata format: $map");
       }
     }
 
@@ -105,62 +107,45 @@ MetadataCollection parseMetadata(String? s) {
       for (final element in decodedJson) {
         if (element is Map<String, dynamic>) {
           processMap(element);
-        } else {
-          Log.error("Invalid metadata element: $element");
         }
       }
-    } else {
-      Log.error("Invalid metadata format: $decodedJson");
     }
-  } catch (e, stacktrace) {
-    Log.error("Failed to parse metadata: $e, input: $s");
-    Log.debug(stacktrace.toString());
+  } catch (_) {
+    return MetadataCollection(sources: []);
   }
 
   return MetadataCollection(sources: metadata, progress: progress);
 }
 
-Future<List<ChatMessageMetaPB>> metadataPBFromMetadata(
+Future<List<ChatMessageMeta>> metadataPBFromMetadata(
   Map<String, dynamic>? map,
 ) async {
   if (map == null) return [];
 
-  final List<ChatMessageMetaPB> metadata = [];
+  final List<ChatMessageMeta> metadata = [];
 
   for (final value in map.values) {
-    switch (value) {
-      case ViewPB _ when value.layout.isDocumentView:
-        final payload = OpenDocumentPayloadPB(documentId: value.id);
-        await DocumentEventGetDocumentText(payload).send().fold(
-          (pb) {
-            metadata.add(
-              ChatMessageMetaPB(
-                id: value.id,
-                name: value.name,
-                data: pb.text,
-                loaderType: ContextLoaderTypePB.Txt,
-                source: appflowySource,
-              ),
-            );
-          },
-          (err) => Log.error('Failed to get document text: $err'),
-        );
-        break;
-      case ChatFile(
-          filePath: final filePath,
-          fileName: final fileName,
-          fileType: final fileType,
-        ):
-        metadata.add(
-          ChatMessageMetaPB(
-            id: nanoid(8),
-            name: fileName,
-            data: filePath,
-            loaderType: fileType,
-            source: filePath,
-          ),
-        );
-        break;
+    if (value is ChatViewReference) {
+      final source = value.isDocumentView ? appflowySource : value.id;
+      metadata.add(
+        ChatMessageMeta(
+          id: value.id,
+          name: value.name,
+          data: '',
+          loaderType: ContextLoaderType.txt,
+          source: source,
+        ),
+      );
+    } else if (value is ChatFile) {
+      metadata.add(
+        ChatMessageMeta(
+          id: value.filePath,
+          name: value.fileName,
+          data: value.filePath,
+          loaderType: value.fileType,
+          source: value.filePath,
+        ),
+      );
     }
   }
 
@@ -174,7 +159,7 @@ List<ChatFile> chatFilesFromMessageMetadata(
   if (map != null) {
     for (final entry in map.entries) {
       if (entry.value is ChatFile) {
-        metadata.add(entry.value);
+        metadata.add(entry.value as ChatFile);
       }
     }
   }

@@ -1,0 +1,15 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-raw-types: false
+  errors:
+    invalid_use_of_visible_for_testing_member: ignore
+    depend_on_referenced_packages: ignore
+
+lint:
+  rules:
+    - prefer_const_constructors
+    - prefer_const_literals_to_create_immutables
+    - always_use_package_imports
+

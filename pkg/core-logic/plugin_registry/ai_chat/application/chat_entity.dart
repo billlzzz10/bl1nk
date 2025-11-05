@@ -1,28 +1,19 @@
 import 'dart:io';
 
-import '../../../../../appflowy_backend/protobuf/flowy-ai/protobuf.dart';
-import '../../../../../appflowy_backend/protobuf/flowy-error/errors.pb.dart';
-import '../../../../../appflowy_backend/protobuf/flowy-folder/protobuf.dart';
-import '../../../../../equatable/equatable.dart';
-import '../../../../../freezed_annotation/freezed_annotation.dart';
 import 'package:path/path.dart' as path;
-
-part 'chat_entity.g.dart';
-part 'chat_entity.freezed.dart';
 
 const errorMessageTextKey = "errorMessageText";
 const systemUserId = "system";
 const aiResponseUserId = "0";
 
-/// `messageRefSourceJsonStringKey` is the key used for metadata that contains the reference source of a message.
-/// Each message may include this information.
+/// `messageRefSourceJsonStringKey` is the key used for metadata that contains the reference
+/// source of a message. Each message may include this information.
 /// - When used in a sent message, it indicates that the message includes an attachment.
 /// - When used in a received message, it indicates the AI reference sources used to answer a question.
 const messageRefSourceJsonStringKey = "ref_source_json_string";
 const messageChatFileListKey = "chat_files";
 const messageQuestionIdKey = "question_id";
 
-@JsonSerializable()
 class ChatMessageRefSource {
   ChatMessageRefSource({
     required this.id,
@@ -30,28 +21,37 @@ class ChatMessageRefSource {
     required this.source,
   });
 
-  factory ChatMessageRefSource.fromJson(Map<String, dynamic> json) =>
-      _$ChatMessageRefSourceFromJson(json);
+  factory ChatMessageRefSource.fromJson(Map<String, dynamic> json) {
+    return ChatMessageRefSource(
+      id: json['id'] as String? ?? '',
+      name: json['name'] as String? ?? '',
+      source: json['source'] as String? ?? '',
+    );
+  }
 
   final String id;
   final String name;
   final String source;
 
-  Map<String, dynamic> toJson() => _$ChatMessageRefSourceToJson(this);
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'source': source,
+      };
 }
 
-@JsonSerializable()
 class AIChatProgress {
   AIChatProgress({
     required this.step,
   });
 
-  factory AIChatProgress.fromJson(Map<String, dynamic> json) =>
-      _$AIChatProgressFromJson(json);
+  factory AIChatProgress.fromJson(Map<String, dynamic> json) {
+    return AIChatProgress(step: json['step'] as String? ?? '');
+  }
 
   final String step;
 
-  Map<String, dynamic> toJson() => _$AIChatProgressToJson(this);
+  Map<String, dynamic> toJson() => {'step': step};
 }
 
 enum PromptResponseState {
@@ -63,7 +63,14 @@ enum PromptResponseState {
   bool get isReady => this == ready || this == relatedQuestionsReady;
 }
 
-class ChatFile extends Equatable {
+enum ContextLoaderType {
+  pdf,
+  txt,
+  markdown,
+  unknown,
+}
+
+class ChatFile {
   const ChatFile({
     required this.filePath,
     required this.fileName,
@@ -79,19 +86,19 @@ class ChatFile extends Equatable {
     final fileName = path.basename(filePath);
     final extension = path.extension(filePath).toLowerCase();
 
-    ContextLoaderTypePB fileType;
+    ContextLoaderType fileType;
     switch (extension) {
       case '.pdf':
-        fileType = ContextLoaderTypePB.PDF;
+        fileType = ContextLoaderType.pdf;
         break;
       case '.txt':
-        fileType = ContextLoaderTypePB.Txt;
+        fileType = ContextLoaderType.txt;
         break;
       case '.md':
-        fileType = ContextLoaderTypePB.Markdown;
+        fileType = ContextLoaderType.markdown;
         break;
       default:
-        fileType = ContextLoaderTypePB.UnknownLoaderType;
+        fileType = ContextLoaderType.unknown;
     }
 
     return ChatFile(
@@ -103,24 +110,44 @@ class ChatFile extends Equatable {
 
   final String filePath;
   final String fileName;
-  final ContextLoaderTypePB fileType;
+  final ContextLoaderType fileType;
 
   @override
-  List<Object?> get props => [filePath];
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ChatFile && other.filePath == filePath;
+
+  @override
+  int get hashCode => filePath.hashCode;
+}
+
+class ChatViewReference {
+  const ChatViewReference({
+    required this.id,
+    required this.name,
+    this.isDocumentView = false,
+  });
+
+  final String id;
+  final String name;
+  final bool isDocumentView;
 }
 
 typedef ChatFileMap = Map<String, ChatFile>;
-typedef ChatMentionedPageMap = Map<String, ViewPB>;
+typedef ChatMentionedPageMap = Map<String, ChatViewReference>;
 
-@freezed
-class ChatLoadingState with _$ChatLoadingState {
-  const factory ChatLoadingState.loading() = _Loading;
-  const factory ChatLoadingState.finish({FlowyError? error}) = _Finish;
-}
+class ChatLoadingState {
+  const ChatLoadingState._({required this.isLoading, this.error});
 
-extension ChatLoadingStateExtension on ChatLoadingState {
-  bool get isLoading => this is _Loading;
-  bool get isFinish => this is _Finish;
+  const ChatLoadingState.loading() : this._(isLoading: true);
+
+  const ChatLoadingState.finish({String? error})
+      : this._(isLoading: false, error: error);
+
+  final bool isLoading;
+  final String? error;
+
+  bool get isFinish => !isLoading;
 }
 
 enum OnetimeShotType {
@@ -132,7 +159,7 @@ enum OnetimeShotType {
 const onetimeShotType = "OnetimeShotType";
 
 OnetimeShotType? onetimeMessageTypeFromMeta(Map<String, dynamic>? metadata) {
-  return metadata?[onetimeShotType];
+  return metadata?[onetimeShotType] as OnetimeShotType?;
 }
 
 enum LoadChatMessageStatus {
