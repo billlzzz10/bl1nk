@@ -46,7 +46,7 @@ class AIChatProgress {
   });
 
   factory AIChatProgress.fromJson(Map<String, dynamic> json) {
-    return AIChatProgress(step: json['step'] as String? ?? '');
+    return AIChatProgress(step: json['step']?.toString() ?? '');
   }
 
   final String step;
