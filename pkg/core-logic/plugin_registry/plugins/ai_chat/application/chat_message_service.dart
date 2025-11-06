@@ -18,19 +18,6 @@ class ChatMessageMeta {
   final String data;
   final ContextLoaderType loaderType;
   final String source;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ChatMessageMeta &&
-          other.id == id &&
-          other.name == name &&
-          other.data == data &&
-          other.loaderType == loaderType &&
-          other.source == source;
-
-  @override
-  int get hashCode => Object.hash(id, name, data, loaderType, source);
 }
 
 List<ChatFile> fileListFromMessageMetadata(Map<String, dynamic>? map) {

@@ -1,12 +1,6 @@
 import 'dart:convert';
 
 import 'chat_entity.dart';
-import '../../../../../appflowy/plugins/document/application/document_data_pb_extension.dart';
-import '../../../../../appflowy_backend/dispatch/dispatch.dart';
-import '../../../../../appflowy_backend/protobuf/flowy-document/entities.pb.dart';
-import '../../../../../appflowy_backend/protobuf/flowy-error/errors.pb.dart';
-import '../../../../../appflowy_editor/appflowy_editor.dart';
-import '../../../../../appflowy_result/appflowy_result.dart';
 
 const appflowySource = "appflowy";
 
@@ -24,19 +18,6 @@ class ChatMessageMeta {
   final String data;
   final ContextLoaderType loaderType;
   final String source;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ChatMessageMeta &&
-          other.id == id &&
-          other.name == name &&
-          other.data == data &&
-          other.loaderType == loaderType &&
-          other.source == source;
-
-  @override
-  int get hashCode => Object.hash(id, name, data, loaderType, source);
 }
 
 List<ChatFile> fileListFromMessageMetadata(Map<String, dynamic>? map) {
@@ -136,49 +117,6 @@ MetadataCollection parseMetadata(String? s) {
   return MetadataCollection(sources: metadata, progress: progress);
 }
 
-/// Extracts plain text content from a document by iterating all nodes
-String _extractTextFromDocument(Document document) {
-  final textParts = <String>[];
-  final nodes = NodeIterator(
-    document: document,
-    startNode: document.root,
-  ).toList();
-
-  for (final node in nodes) {
-    final delta = node.delta;
-    if (delta != null && delta.isNotEmpty) {
-      final plainText = delta.toPlainText();
-      if (plainText.isNotEmpty) {
-        textParts.add(plainText);
-      }
-    }
-  }
-
-  return textParts.join('\n');
-}
-
-/// Retrieves document text content for a document view reference
-/// Uses DocumentEventGetDocumentData to retrieve document data, matching the original implementation
-Future<String> _getDocumentText(String documentId) async {
-  try {
-    final payload = OpenDocumentPayloadPB()..documentId = documentId;
-    final result = await DocumentEventGetDocumentData(payload).send();
-
-    return result.fold(
-      (documentData) {
-        final document = documentData.toDocument();
-        if (document != null) {
-          return _extractTextFromDocument(document);
-        }
-        return '';
-      },
-      (_) => '',
-    );
-  } catch (_) {
-    return '';
-  }
-}
-
 Future<List<ChatMessageMeta>> metadataPBFromMetadata(
   Map<String, dynamic>? map,
 ) async {
@@ -189,15 +127,11 @@ Future<List<ChatMessageMeta>> metadataPBFromMetadata(
   for (final value in map.values) {
     if (value is ChatViewReference) {
       final source = value.isDocumentView ? appflowySource : value.id;
-      // Retrieve document text for document views
-      final documentText = value.isDocumentView
-          ? await _getDocumentText(value.id)
-          : '';
       metadata.add(
         ChatMessageMeta(
           id: value.id,
           name: value.name,
-          data: documentText,
+          data: '',
           loaderType: ContextLoaderType.txt,
           source: source,
         ),

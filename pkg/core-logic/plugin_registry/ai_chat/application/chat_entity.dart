@@ -23,9 +23,9 @@ class ChatMessageRefSource {
 
   factory ChatMessageRefSource.fromJson(Map<String, dynamic> json) {
     return ChatMessageRefSource(
-      id: json['id']?.toString() ?? '',
-      name: json['name']?.toString() ?? '',
-      source: json['source']?.toString() ?? '',
+      id: json['id'] as String? ?? '',
+      name: json['name'] as String? ?? '',
+      source: json['source'] as String? ?? '',
     );
   }
 
@@ -46,7 +46,7 @@ class AIChatProgress {
   });
 
   factory AIChatProgress.fromJson(Map<String, dynamic> json) {
-    return AIChatProgress(step: json['step']?.toString() ?? '');
+    return AIChatProgress(step: json['step'] as String? ?? '');
   }
 
   final String step;
@@ -159,19 +159,7 @@ enum OnetimeShotType {
 const onetimeShotType = "OnetimeShotType";
 
 OnetimeShotType? onetimeMessageTypeFromMeta(Map<String, dynamic>? metadata) {
-  final value = metadata?[onetimeShotType];
-  if (value == null) return null;
-  if (value is OnetimeShotType) return value;
-  if (value is String) {
-    try {
-      return OnetimeShotType.values.firstWhere(
-        (e) => e.toString().split('.').last == value,
-      );
-    } catch (_) {
-      return null;
-    }
-  }
-  return null;
+  return metadata?[onetimeShotType] as OnetimeShotType?;
 }
 
 enum LoadChatMessageStatus {
