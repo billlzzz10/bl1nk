@@ -23,9 +23,9 @@ class ChatMessageRefSource {
 
   factory ChatMessageRefSource.fromJson(Map<String, dynamic> json) {
     return ChatMessageRefSource(
-      id: json['id'] as String? ?? '',
-      name: json['name'] as String? ?? '',
-      source: json['source'] as String? ?? '',
+      id: json['id']?.toString() ?? '',
+      name: json['name']?.toString() ?? '',
+      source: json['source']?.toString() ?? '',
     );
   }
 
