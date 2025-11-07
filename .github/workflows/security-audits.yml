@@ -75,7 +75,7 @@ jobs:
             echo "" | tee -a "$SUMMARY_FILE"
           }
 
-          run_cmd "npm audit" npm audit --audit-level=low
+          run_cmd "npm audit" npm audit --audit-level=moderate
 
           if [ -n "${SNYK_TOKEN:-}" ]; then
             run_cmd "npx snyk test" npx snyk test
