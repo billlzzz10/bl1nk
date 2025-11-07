@@ -4,6 +4,7 @@
 - Map input with `step` -> returns AIChatProgress
 - List of maps containing `id/name/source` -> returns list of ChatMessageRefSource
 - Invalid JSON -> returns empty result
+- Malformed JSON in chatFilesFromMetadataString -> should handle gracefully
 
 ## chatFileFromMap
 - Null/empty map -> null
