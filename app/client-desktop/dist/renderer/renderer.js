@@ -60,7 +60,10 @@ function renderMessages() {
     for (const m of messages) {
         const row = document.createElement('div');
         row.style.margin = '6px 0';
-        row.innerHTML = `<strong>${m.role}${m.model ? ' [' + m.model + ']' : ''}:</strong> ${m.text}`;
+        const strong = document.createElement('strong');
+        strong.textContent = m.role + (m.model ? ' [' + m.model + ']' : '') + ':';
+        row.appendChild(strong);
+        row.appendChild(document.createTextNode(' ' + (m.text || '')));
         chatBox.appendChild(row);
     }
     chatBox.scrollTop = chatBox.scrollHeight;

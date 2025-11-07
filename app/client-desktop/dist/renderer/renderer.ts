@@ -22,8 +22,9 @@ if (enableShare) {
   });
 
   menu.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    const action = target.getAttribute('data-action');
+    const actionEl = (e.target as HTMLElement).closest('[data-action]') as HTMLElement | null;
+    if (!actionEl) return;
+    const action = actionEl.getAttribute('data-action');
     if (action) {
       alert(`${action}: Coming soon`);
       menu.style.display = 'none';
