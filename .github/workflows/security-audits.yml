@@ -1,0 +1,127 @@
+name: Security Audits
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  audits:
+    name: Security audits (Node ${{ matrix.node-version }}, Dart ${{ matrix.dart-sdk }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [ '18.x', '20.x' ]
+        dart-sdk: [ 'stable' ]
+    env:
+      SUMMARY_FILE: ${{ runner.temp }}/security-summary-${{ matrix.node-version }}-${{ matrix.dart-sdk }}.md
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.dart-sdk }}
+
+      - name: Get Dart dependencies
+        run: dart pub get --directory pkg/core-logic
+
+      - name: Run security commands
+        id: run-security
+        env:
+          SUMMARY_FILE: ${{ env.SUMMARY_FILE }}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          set -o pipefail
+          SUMMARY_FILE="${SUMMARY_FILE:-$RUNNER_TEMP/security-summary.md}"
+          mkdir -p "$(dirname "$SUMMARY_FILE")"
+          echo "# Security audit summary" > "$SUMMARY_FILE"
+          echo "Node.js: ${{ matrix.node-version }}" >> "$SUMMARY_FILE"
+          echo "Dart SDK: ${{ matrix.dart-sdk }}" >> "$SUMMARY_FILE"
+          echo "" >> "$SUMMARY_FILE"
+
+          failures=0
+
+          run_cmd() {
+            local title="$1"
+            shift
+            echo "## ${title}" | tee -a "$SUMMARY_FILE"
+            if "$@" 2>&1 | tee -a "$SUMMARY_FILE"; then
+              echo "Status: ✅" | tee -a "$SUMMARY_FILE"
+            else
+              status=${PIPESTATUS[0]}
+              echo "Status: ❌ (exit ${status})" | tee -a "$SUMMARY_FILE"
+              echo "::error::${title} failed with exit code ${status}" >&2
+              failures=$((failures+1))
+            fi
+            echo "" | tee -a "$SUMMARY_FILE"
+          }
+
+          run_cmd "npm audit" npm audit --audit-level=low
+
+          if [ -n "${SNYK_TOKEN:-}" ]; then
+            run_cmd "npx snyk test" npx snyk test
+          else
+            echo "## npx snyk test" | tee -a "$SUMMARY_FILE"
+            echo "SNYK_TOKEN not configured. Skipping Snyk scan." | tee -a "$SUMMARY_FILE"
+            echo "Status: ⚪️" | tee -a "$SUMMARY_FILE"
+            echo "" | tee -a "$SUMMARY_FILE"
+          fi
+
+          run_cmd "dart analyze pkg" dart analyze pkg
+
+          lint_dir() {
+            local dir="$1"
+            local label="$2"
+            if [ -f "$dir/package.json" ]; then
+              if node -e "const pkg=require('./$dir/package.json'); process.exit(pkg.scripts && pkg.scripts.lint ? 0 : 1);"; then
+                run_cmd "npm run lint ($label)" npm run lint --prefix "$dir"
+              else
+                echo "## npm run lint ($label)" | tee -a "$SUMMARY_FILE"
+                echo "No lint script defined; skipping." | tee -a "$SUMMARY_FILE"
+                echo "Status: ⚪️" | tee -a "$SUMMARY_FILE"
+                echo "" | tee -a "$SUMMARY_FILE"
+              fi
+            else
+              echo "## npm run lint ($label)" | tee -a "$SUMMARY_FILE"
+              echo "No package.json found in $dir; skipping." | tee -a "$SUMMARY_FILE"
+              echo "Status: ⚪️" | tee -a "$SUMMARY_FILE"
+              echo "" | tee -a "$SUMMARY_FILE"
+            fi
+          }
+
+          lint_dir "app" "app/"
+          lint_dir "scripts" "scripts/"
+
+          if [ "$failures" -ne 0 ]; then
+            echo "::error::Security audits detected ${failures} failing command(s)." >&2
+            exit 1
+          fi
+
+      - name: Upload security summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-summary-${{ matrix.node-version }}-${{ matrix.dart-sdk }}
+          path: ${{ env.SUMMARY_FILE }}
+
+      - name: Publish job summary
+        if: always()
+        run: |
+          if [ -f "${{ env.SUMMARY_FILE }}" ]; then
+            cat "${{ env.SUMMARY_FILE }}" >> "$GITHUB_STEP_SUMMARY"
+          fi
