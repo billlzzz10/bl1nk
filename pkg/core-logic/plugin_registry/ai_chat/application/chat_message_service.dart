@@ -131,7 +131,7 @@ Future<List<ChatMessageMeta>> metadataPBFromMetadata(
         ChatMessageMeta(
           id: value.id,
           name: value.name,
-          data: value.isDocumentView ? 'TODO: Fetch document content' : '',
+          data: '',
           loaderType: ContextLoaderType.txt,
           source: source,
         ),
