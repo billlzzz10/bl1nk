@@ -45,7 +45,10 @@ jobs:
         id: run-security
         env:
           SUMMARY_FILE: ${{ env.SUMMARY_FILE }}
+        env:
+          SUMMARY_FILE: ${{ env.SUMMARY_FILE }}
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        shell: bash
         run: |
           set -o pipefail
           SUMMARY_FILE="${SUMMARY_FILE:-$RUNNER_TEMP/security-summary.md}"
