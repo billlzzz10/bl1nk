@@ -78,7 +78,15 @@ jobs:
           run_cmd "npm audit" npm audit --audit-level=moderate
 
           if [ -n "${SNYK_TOKEN:-}" ]; then
-            run_cmd "npx snyk test" npx snyk test
+            if npx snyk auth "$SNYK_TOKEN" >/dev/null 2>&1; then
+              run_cmd "npx snyk test" npx snyk test
+            else
+              echo "## npx snyk test" | tee -a "$SUMMARY_FILE"
+              echo "SNYK_TOKEN authentication failed. Skipping Snyk scan." | tee -a "$SUMMARY_FILE"
+              echo "Status: ❌" | tee -a "$SUMMARY_FILE"
+              echo "" | tee -a "$SUMMARY_FILE"
+              failures=$((failures+1))
+            fi
           else
             echo "## npx snyk test" | tee -a "$SUMMARY_FILE"
             echo "SNYK_TOKEN not configured. Skipping Snyk scan." | tee -a "$SUMMARY_FILE"
