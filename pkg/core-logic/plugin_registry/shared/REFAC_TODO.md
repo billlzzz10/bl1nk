@@ -23,7 +23,7 @@
 - pkg/core-logic/plugin_registry/shared/share/export_tab.dart:8:import '../../../../../appflowy/workspace/application/export/document_exporter.dart';
 - pkg/core-logic/plugin_registry/shared/share/export_tab.dart:9:import '../../../../../appflowy/workspace/presentation/widgets/dialogs.dart';
 - pkg/core-logic/plugin_registry/shared/share/export_tab.dart:10:import '../../../../../appflowy_backend/protobuf/flowy-folder/view.pb.dart';
-- pkg/core-logic/plugin_registry/shared/share/share_menu.dart:1:import 'package:appflowy/features/share_tab/presentation/share_tab.dart'
+- pkg/core-logic/plugin_registry/shared/share/share_menu.dart:1:import 'package:appflowy/features/share_tab/presentation/share_tab.dart' as share_section;
 - pkg/core-logic/plugin_registry/shared/share/share_menu.dart:3:import '../../../../../appflowy/features/workspace/logic/workspace_bloc.dart';
 - pkg/core-logic/plugin_registry/shared/share/share_menu.dart:4:import '../../../../../appflowy/generated/flowy_svgs.g.dart';
 - pkg/core-logic/plugin_registry/shared/share/share_menu.dart:5:import '../../../../../appflowy/generated/locale_keys.g.dart';
