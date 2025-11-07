@@ -133,6 +133,8 @@ jobs:
       - name: Publish job summary
         if: always()
         run: |
-          if [ -f "${{ env.SUMMARY_FILE }}" ]; then
-            cat "${{ env.SUMMARY_FILE }}" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f "${{ env.SUMMARY_FILE }}" ] && [ -r "${{ env.SUMMARY_FILE }}" ]; then
+            cat "${{ env.SUMMARY_FILE }}" >> "$GITHUB_STEP_SUMMARY" || echo "Failed to publish job summary" >&2
+          else
+            echo "Summary file not found or not readable: ${{ env.SUMMARY_FILE }}" >&2
           fi
