@@ -89,7 +89,7 @@ jobs:
             local dir="$1"
             local label="$2"
             if [ -f "$dir/package.json" ]; then
-              if node -e "const pkg=require('./$dir/package.json'); process.exit(pkg.scripts && pkg.scripts.lint ? 0 : 1);"; then
+              if node -e "const path=require('path'); const pkg=require(path.resolve('.', '$dir', 'package.json')); process.exit(pkg.scripts && pkg.scripts.lint ? 0 : 1);"; then
                 run_cmd "npm run lint ($label)" npm run lint --prefix "$dir"
               else
                 echo "## npm run lint ($label)" | tee -a "$SUMMARY_FILE"
