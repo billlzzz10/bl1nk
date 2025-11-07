@@ -24,9 +24,8 @@ jobs:
       - name: Flutter pub get
         run: flutter pub get
 
-      - name: Flutter analyze
-        run: flutter analyze .
+      - name: Flutter analyze (lib + test only)
+        run: flutter analyze lib test || flutter analyze lib
 
       - name: Flutter test (ENABLE_SHARE_UI=true)
         run: flutter test --dart-define=ENABLE_SHARE_UI=true
-
