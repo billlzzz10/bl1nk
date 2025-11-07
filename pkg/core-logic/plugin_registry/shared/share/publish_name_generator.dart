@@ -1,19 +1,16 @@
-String replaceInvalidChars(String input) {
-  final RegExp invalidCharsRegex = RegExp('[^a-zA-Z0-9-]');
-  return input.replaceAll(invalidCharsRegex, '-');
-}
+// Placeholder name generator while AppFlowy dependencies are decoupled
 
-Future<String> generateNameSpace() async {
-  return '';
-}
-
-// The backend limits the publish name to a maximum of 120 characters.
-// If the combined length of the ID and the name exceeds 120 characters,
-// we will truncate the name to ensure the final result is within the limit.
-// The name should only contain alphanumeric characters and hyphens.
-Future<String> generatePublishName(String id, String name) async {
-  if (name.length >= 120 - id.length) {
-    name = name.substring(0, 120 - id.length);
+class PublishNameGenerator {
+  static String generate({String? baseName}) {
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
+    final base = baseName ?? 'document';
+    return '${base}_$timestamp';
   }
-  return replaceInvalidChars('$name-$id');
+  
+  static String sanitize(String name) {
+    // Remove special characters and spaces
+    return name.replaceAll(RegExp(r'[^\w\s-]'), '')
+               .replaceAll(RegExp(r'\s+'), '-')
+               .toLowerCase();
+  }
 }

@@ -118,6 +118,13 @@ class ChatFile {
       other is ChatFile && other.filePath == filePath;
 
   @override
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ChatFile && other.filePath == filePath;
+
+  @override
   int get hashCode => filePath.hashCode;
 }
 
