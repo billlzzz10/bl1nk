@@ -19,6 +19,5 @@ extension IntoCoverTypePB on CoverType {
         CoverType.color => CoverTypePB.ColorCover,
         CoverType.asset => CoverTypePB.AssetCover,
         CoverType.file => CoverTypePB.FileCover,
-        _ => CoverTypePB.FileCover,
       };
 }

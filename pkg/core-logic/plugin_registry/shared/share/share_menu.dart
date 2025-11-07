@@ -27,6 +27,8 @@ class ShareMenu extends StatefulWidget {
     required this.onClose,
   });
 
+class ShareMenu extends StatelessWidget {
+  const ShareMenu({super.key, required this.tabs, required this.viewName, required this.onClose});
   final List<ShareMenuTab> tabs;
   final String viewName;
   final VoidCallback onClose;

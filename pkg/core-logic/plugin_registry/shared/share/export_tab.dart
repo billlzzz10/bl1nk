@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 // Placeholder export tab while AppFlowy dependencies are decoupled
 
 class ExportTab extends StatelessWidget {
-  const ExportTab({
-    super.key,
-  });
+  const ExportTab({super.key});
 
   @override
   Widget build(BuildContext context) {
