@@ -117,7 +117,7 @@ MetadataCollection parseMetadata(String? s) {
   return MetadataCollection(sources: metadata, progress: progress);
 }
 
-Future<List<ChatMessageMeta>> metadataPBFromMetadata(
+Future<List<ChatMessageMeta>> metadataFromMetadata(
   Map<String, dynamic>? map,
 ) async {
   if (map == null) return [];
@@ -131,7 +131,7 @@ Future<List<ChatMessageMeta>> metadataPBFromMetadata(
         ChatMessageMeta(
           id: value.id,
           name: value.name,
-          data: '',
+          data: value.isDocumentView ? 'Document content placeholder' : '',
           loaderType: ContextLoaderType.txt,
           source: source,
         ),
