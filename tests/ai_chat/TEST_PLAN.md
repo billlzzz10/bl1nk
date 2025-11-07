@@ -10,6 +10,6 @@
 - Map with invalid path -> null
 - Map with valid path -> ChatFile with correct loader type for .pdf/.txt/.md
 
-## metadataPBFromMetadata (placeholder behavior)
+## metadataFromMetadata (placeholder behavior)
 - With ChatViewReference -> produces ChatMessageMeta with txt loader type
 - With ChatFile -> produces ChatMessageMeta reflecting file path/type
