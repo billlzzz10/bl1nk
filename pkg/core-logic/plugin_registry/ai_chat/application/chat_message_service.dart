@@ -131,7 +131,7 @@ Future<List<ChatMessageMeta>> metadataPBFromMetadata(
         ChatMessageMeta(
           id: value.id,
           name: value.name,
-          data: '',
+          data: value.isDocumentView ? 'Document content placeholder' : '',
           loaderType: ContextLoaderType.txt,
           source: source,
         ),
