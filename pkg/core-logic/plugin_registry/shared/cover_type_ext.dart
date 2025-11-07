@@ -1,5 +1,18 @@
-import '../../../../appflowy/plugins/document/presentation/editor_plugins/plugins.dart';
-import '../../../../appflowy_backend/protobuf/flowy-database2/protobuf.dart';
+// Placeholder types while AppFlowy dependencies are decoupled
+
+enum CoverType {
+  none,
+  color,
+  asset,
+  file,
+}
+
+enum CoverTypePB {
+  None,
+  ColorCover,
+  AssetCover,
+  FileCover,
+}
 
 extension IntoCoverTypePB on CoverType {
   CoverTypePB into() => switch (this) {
