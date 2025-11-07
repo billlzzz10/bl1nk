@@ -117,7 +117,7 @@ MetadataCollection parseMetadata(String? s) {
   return MetadataCollection(sources: metadata, progress: progress);
 }
 
-Future<List<ChatMessageMeta>> metadataPBFromMetadata(
+Future<List<ChatMessageMeta>> metadataFromMetadata(
   Map<String, dynamic>? map,
 ) async {
   if (map == null) return [];
