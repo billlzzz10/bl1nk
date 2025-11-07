@@ -121,7 +121,7 @@ class ChatFile {
       other.fileType == fileType;
 
   @override
-  int get hashCode => filePath.hashCode;
+  int get hashCode => Object.hash(filePath, fileName, fileType);
 }
 
 class ChatViewReference {
