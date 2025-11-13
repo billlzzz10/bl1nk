@@ -5,18 +5,67 @@
   "description": "bl1nk Windows Desktop (Electron + TypeScript)",
   "main": "dist/main.js",
   "type": "module",
+  "author": "bl1nkOS",
+  "license": "ISC",
   "scripts": {
     "build": "tsc -p .",
     "start": "electron .",
-    "dev": "concurrently \"tsc -w -p .\" \"cross-env ENABLE_SHARE_UI=${ENABLE_SHARE_UI} ENABLE_CHAT_UI=${ENABLE_CHAT_UI} electronmon .\""
+    "dev": "concurrently \"tsc -w -p .\" \"cross-env ENABLE_SHARE_UI=${ENABLE_SHARE_UI} ENABLE_CHAT_UI=${ENABLE_CHAT_UI} electronmon .\"",
+    "package": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:portable": "npm run build && electron-builder --win portable",
+    "dist:all": "npm run build && electron-builder --win --x64 --ia32"
   },
   "dependencies": {
+    "@qdrant/js-client-rest": "^1.7.0"
   },
   "devDependencies": {
+    "@types/node": "^20.10.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "electron": "^31.3.0",
+    "electron-builder": "^24.9.1",
     "electronmon": "^2.0.2",
     "typescript": "^5.6.3"
+  },
+  "build": {
+    "appId": "com.bl1nk.desktop",
+    "productName": "bl1nk Desktop",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "bl1nk Desktop"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable.${ext}"
+    },
+    "extraMetadata": {
+      "main": "dist/main.js"
+    }
   }
 }

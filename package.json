@@ -3,18 +3,36 @@
   "version": "1.0.0",
   "description": "🧠 bl1nkOS Core Framework",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "services:start": "bash scripts/init-services.sh",
+    "services:stop": "bash scripts/stop-services.sh",
+    "services:init": "node scripts/init-qdrant.js",
+    "desktop:dev": "cd app/client-desktop && npm run dev",
+    "desktop:build": "cd app/client-desktop && npm run build",
+    "desktop:dist": "cd app/client-desktop && npm run dist:win",
+    "setup": "npm install && cd app/client-desktop && npm install"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "ai",
+    "agent",
+    "rag",
+    "vector-search",
+    "caching"
+  ],
+  "author": "bl1nkOS",
   "license": "ISC",
   "dependencies": {
     "@qwen-code/qwen-code": "^0.1.2",
+    "@qdrant/js-client-rest": "^1.7.0",
     "qwen-code": "^0.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
   }
 }
