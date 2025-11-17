@@ -50,7 +50,7 @@ function normaliseJsonForChecksum(data) {
   return JSON.stringify(sortValue(data));
 }
 
-function parseCliArgs(argv) {
+export function parseCliArgs(argv) {
   const options = { dryRun: false };
   const includePaths = new Set();
 
