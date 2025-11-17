@@ -1,11 +1,9 @@
-import '../../../../../appflowy/util/theme_extension.dart';
-import '../../../../../flutter/material.dart';
+import 'package:flutter/material.dart';
 
-class ShareMenuColors {
-  static Color borderColor(BuildContext context) {
-    final borderColor = Theme.of(context).isLightMode
-        ? const Color(0x1E14171B)
-        : Colors.white.withValues(alpha: 0.1);
-    return borderColor;
+// Placeholder color extension while AppFlowy dependencies are decoupled
+
+extension PublishColorExtension on Color {
+  String toHexString() {
+    return '#${value.toRadixString(16).padLeft(8, '0').substring(2)}';
   }
 }

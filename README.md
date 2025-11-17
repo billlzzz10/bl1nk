@@ -122,7 +122,7 @@ flutter test --dart-define=ENABLE_SHARE_UI=true
 dart run -D ENABLE_SHARE_UI=true path/to/app.dart
 ```
 
-หมายเหตุ: เมื่อไม่ใส่แฟลก ปุ่ม Share จะปรากฏเป็นสถานะปิดการใช้งานพร้อม tooltip “Coming soon” เพื่อคง layout และลดความสับสนผู้ใช้
+หมายเหตุ: เมื่อไม่ใส่แฟลก ปุ่ม Share จะปรากฏเป็นสถานะปิดการใช้งานพร้อม tooltip "Coming soon" เพื่อคง layout และลดความสับสนผู้ใช้
 
 ---
 
@@ -139,8 +139,8 @@ cd app/client-desktop
 npm install
 
 # พัฒนา (watch + auto-reload)
-# เปิดเมนู Share ชั่วคราวด้วยแฟลก (ทางเลือก)
-cross-env ENABLE_SHARE_UI=true npm run dev
+# เปิดเมนู Share/Chat ชั่วคราวด้วยแฟลก (ทางเลือก)
+cross-env ENABLE_SHARE_UI=true ENABLE_CHAT_UI=true npm run dev
 
 # สร้างไฟล์ build TypeScript
 npm run build
@@ -150,7 +150,7 @@ npm start
 ```
 
 หมายเหตุ:
-- ค่าเริ่มต้นปุ่ม Share เป็น disabled + tooltip “Coming soon”
+- ค่าเริ่มต้นปุ่ม Share เป็น disabled + tooltip "Coming soon"
 - ตั้งค่าแฟลก `ENABLE_SHARE_UI=true` เพื่อเปิดเมนู Share/Export/Publish (placeholder)
 
 ---

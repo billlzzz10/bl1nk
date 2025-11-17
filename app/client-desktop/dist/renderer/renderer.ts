@@ -1,15 +1,15 @@
-declare global {
-  interface Window {
-    bl1nk?: { flags: { ENABLE_SHARE_UI: boolean } };
-  }
-}
+export {};
 
 const btn = document.getElementById('shareBtn') as HTMLButtonElement;
 const menu = document.getElementById('shareMenu') as HTMLDivElement;
 const modelSelect = document.getElementById('modelSelect') as HTMLSelectElement;
 const clearChatBtn = document.getElementById('clearChat') as HTMLButtonElement;
 
-const enableShare = !!window.bl1nk?.flags.ENABLE_SHARE_UI;
+// Access flags from preload safely without relying on global augmentation types
+type Flags = { ENABLE_SHARE_UI: boolean; ENABLE_CHAT_UI: boolean };
+const bl1nk = (window as any).bl1nk as { flags: Flags } | undefined;
+
+const enableShare = !!bl1nk?.flags.ENABLE_SHARE_UI;
 
 if (enableShare) {
   btn.disabled = false;
@@ -22,8 +22,9 @@ if (enableShare) {
   });
 
   menu.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    const action = target.getAttribute('data-action');
+    const actionEl = (e.target as HTMLElement).closest('[data-action]') as HTMLElement | null;
+    if (!actionEl) return;
+    const action = actionEl.getAttribute('data-action');
     if (action) {
       alert(`${action}: Coming soon`);
       menu.style.display = 'none';
@@ -44,7 +45,7 @@ const chatBox = document.getElementById('chatBox') as HTMLDivElement;
 const chatInput = document.getElementById('chatInput') as HTMLInputElement;
 const chatSend = document.getElementById('chatSend') as HTMLButtonElement;
 
-const enableChat = !!window.bl1nk?.flags.ENABLE_CHAT_UI;
+const enableChat = !!bl1nk?.flags.ENABLE_CHAT_UI;
 
 type ChatMessage = { role: 'user' | 'assistant'; text: string; ts: number; model?: string };
 let messages: ChatMessage[] = [];

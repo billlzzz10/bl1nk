@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // Import target via relative path since sources are outside lib/
-import '../plugin_registry/shared/share/_shared.dart';
+import 'package:core_logic/share_menu_button.dart';
 
 void main() {
   testWidgets('ShareMenuButton renders a FilledButton', (tester) async {
@@ -18,4 +18,3 @@ void main() {
     expect(find.byType(FilledButton), findsOneWidget);
   });
 }
-
