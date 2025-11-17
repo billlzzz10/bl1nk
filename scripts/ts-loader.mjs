@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
 export async function resolve(specifier, context, defaultResolve) {
   const resolution = await defaultResolve(specifier, context, defaultResolve);
