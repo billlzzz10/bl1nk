@@ -71,6 +71,10 @@ function parseCliArgs(argv) {
         if (!value) {
           throw new Error('--path requires a value, e.g. --path=constitution/system-map.json');
         }
+        // Prevent path traversal attacks
+        if (value.includes('..') || path.isAbsolute(value)) {
+          throw new Error('--path must be a relative path without ".." segments');
+        }
         includePaths.add(value);
         break;
       case '--paths':
@@ -80,8 +84,13 @@ function parseCliArgs(argv) {
         value.split(',').forEach((item) => {
           const trimmed = item.trim();
           if (trimmed) {
+            // Prevent path traversal attacks
+            if (trimmed.includes('..') || path.isAbsolute(trimmed)) {
+              throw new Error('--paths must contain relative paths without ".." segments');
+            }
             includePaths.add(trimmed);
           }
+        });
         });
         break;
       default:
