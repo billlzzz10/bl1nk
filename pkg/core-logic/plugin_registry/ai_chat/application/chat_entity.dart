@@ -121,7 +121,14 @@ class ChatFile {
       other.fileType == fileType;
 
   @override
-  int get hashCode => Object.hash(filePath, fileName, fileType);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ChatFile && other.filePath == filePath;
+
+  @override
+  int get hashCode => filePath.hashCode;
 }
 
 class ChatViewReference {

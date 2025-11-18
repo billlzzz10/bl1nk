@@ -8,7 +8,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --loader ./scripts/ts-loader.mjs --test",
+    "update:system-metadata": "node --loader ./scripts/ts-loader.mjs scripts/update-system-metadata.ts"
   },
   "keywords": [],
   "author": "",

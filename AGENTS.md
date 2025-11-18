@@ -2,6 +2,7 @@
 
 ## Project Structure & Module Organization
 - `app/`: client integrations (CLI, VSCode, web, server adapters).
+  - `client-desktop`: Windows desktop app (Electron + TypeScript).
 - `pkg/`: core Dart/Flutter code (logic, types, UI components, schemas).
 - `services/`: infrastructure adapters (e.g., Redis, Qdrant).
 - `commands/`: CLI/dev utilities and entrypoints.
@@ -18,6 +19,11 @@
   - `dart test` or `flutter test` — run unit tests when present (`*_test.dart`).
 - Python utilities
   - Activate local venv: `source .venv/bin/activate` (if used by a script).
+
+- Electron (Windows desktop) in `app/client-desktop/`
+  - `npm install` — install dependencies.
+  - `npm run dev` — TypeScript watch + Electron reload. Use `ENABLE_SHARE_UI=true` to unlock Share menu placeholders.
+  - `npm run build` then `npm start` — build JS to `dist/` and run app.
 
 ## Coding Style & Naming Conventions
 - Dart: 2‑space indent; files `snake_case.dart`; classes `PascalCase`; members `camelCase`.

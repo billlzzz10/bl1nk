@@ -122,4 +122,40 @@ flutter test --dart-define=ENABLE_SHARE_UI=true
 dart run -D ENABLE_SHARE_UI=true path/to/app.dart
 ```
 
-หมายเหตุ: เมื่อไม่ใส่แฟลก ปุ่ม Share จะปรากฏเป็นสถานะปิดการใช้งานพร้อม tooltip “Coming soon” เพื่อคง layout และลดความสับสนผู้ใช้
+หมายเหตุ: เมื่อไม่ใส่แฟลก ปุ่ม Share จะปรากฏเป็นสถานะปิดการใช้งานพร้อม tooltip "Coming soon" เพื่อคง layout และลดความสับสนผู้ใช้
+
+---
+
+## 6. Desktop (Windows) — Electron + TypeScript
+
+ที่อยู่โค้ด: `app/client-desktop`
+
+คำสั่งพัฒนาและรัน (ต้องติดตั้ง Node.js และ npm):
+
+```bash
+cd app/client-desktop
+
+# ติดตั้ง dependencies
+npm install
+
+# พัฒนา (watch + auto-reload)
+# เปิดเมนู Share/Chat ชั่วคราวด้วยแฟลก (ทางเลือก)
+cross-env ENABLE_SHARE_UI=true ENABLE_CHAT_UI=true npm run dev
+
+# สร้างไฟล์ build TypeScript
+npm run build
+
+# รันแอปจาก build
+npm start
+```
+
+หมายเหตุ:
+- ค่าเริ่มต้นปุ่ม Share เป็น disabled + tooltip "Coming soon"
+- ตั้งค่าแฟลก `ENABLE_SHARE_UI=true` เพื่อเปิดเมนู Share/Export/Publish (placeholder)
+
+---
+
+## 7. ความปลอดภัย (Security)
+
+- [Operations Runbooks](doc/operations/index.md): รวมขั้นตอน Incident Response และงานบำรุงรักษา
+- [Metadata Maintenance Guide](doc/operations/metadata-maintenance.md): วิธีอัปเดต checksum/timestamp สำหรับไฟล์ระบบสำคัญ
