@@ -1,8 +1,18 @@
-// Placeholder types to decouple from AppFlowy deps
+// Placeholder types while AppFlowy dependencies are decoupled
 
-enum CoverType { color, asset, file }
+enum CoverType {
+  none,
+  color,
+  asset,
+  file,
+}
 
-enum CoverTypePB { ColorCover, AssetCover, FileCover }
+enum CoverTypePB {
+  None,
+  ColorCover,
+  AssetCover,
+  FileCover,
+}
 
 extension IntoCoverTypePB on CoverType {
   CoverTypePB into() => switch (this) {

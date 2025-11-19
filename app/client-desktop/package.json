@@ -1,0 +1,22 @@
+{
+  "name": "bl1nk-desktop",
+  "private": true,
+  "version": "0.1.0",
+  "description": "bl1nk Windows Desktop (Electron + TypeScript)",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "electron .",
+    "dev": "concurrently \"tsc -w -p .\" \"cross-env ENABLE_SHARE_UI=${ENABLE_SHARE_UI} ENABLE_CHAT_UI=${ENABLE_CHAT_UI} electronmon .\""
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^31.3.0",
+    "electronmon": "^2.0.2",
+    "typescript": "^5.6.3"
+  }
+}
