@@ -57,7 +57,7 @@ create table if not exists chat_context_files (
   loader_type text not null check (loader_type in ('pdf','txt','markdown','unknown')),
   path text,
   url text,
-  hash text,
+  hash text not null,
   status text not null check (status in ('uploading','pending_chunks','ready','error')),
   created_at timestamptz not null default now(),
   unique (workspace_id, hash)
