@@ -5,7 +5,10 @@ import { z } from 'zod';
 import { zChatThread, zChatMessage, zExportRequest } from './types/chat.js';
 
 const app = Fastify({ logger: true });
-await app.register(cors, { origin: true });
+await app.register(cors, { 
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || [''],
+  credentials: true 
+});
 await app.register(sse);
 
 app.get('/health', async () => ({ ok: true }));
