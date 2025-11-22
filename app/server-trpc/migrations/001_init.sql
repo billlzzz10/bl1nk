@@ -125,3 +125,16 @@ alter table chat_context_files enable row level security;
 alter table thread_attachments enable row level security;
 alter table jobs enable row level security;
 
+-- Add basic RLS policies (customize based on your auth system)
+create policy "Users can access threads in their workspaces" on chat_threads
+  for all using (workspace_id in (
+    select workspace_id from workspace_members 
+    where account_id = current_setting('app.current_user_id')::uuid
+  ));
+
+create policy "Users can access messages in their workspaces" on chat_messages
+  for all using (workspace_id in (
+    select workspace_id from workspace_members 
+    where account_id = current_setting('app.current_user_id')::uuid
+  ));
+
