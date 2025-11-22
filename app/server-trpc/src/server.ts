@@ -6,8 +6,10 @@ import { zChatThread, zChatMessage, zExportRequest } from './types/chat.js';
 
 const app = Fastify({ logger: true });
 await app.register(cors, { 
-  origin: process.env.ALLOWED_ORIGINS?.split(',') || [''],
-  credentials: true 
+  origin: process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(',')
+    : true,
+  credentials: true,
 });
 await app.register(sse);
 
