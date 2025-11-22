@@ -19,19 +19,26 @@ const messages = new Map<string, z.infer<typeof zChatMessage>>();
 
 // Threads
 app.post('/threads', async (req, reply) => {
-  const body = (req.body ?? {}) as any;
-  const schema = z.object({
-    workspaceId: z.string().uuid(),
-    title: z.string().optional(),
-    modelConfig: z.object({ provider: z.string(), modelId: z.string(), params: z.record(z.any()).optional() }).default({ provider: 'openai', modelId: 'gpt-4o-mini' }),
-  });
-  const input = schema.parse(body);
-  const id = crypto.randomUUID();
-  const now = Date.now();
-  const th = { id, workspaceId: input.workspaceId, title: input.title, modelConfig: input.modelConfig, createdAt: now, updatedAt: now };
-  const parsed = zChatThread.parse(th);
-  threads.set(id, parsed);
-  return reply.code(201).send(parsed);
+  try {
+    const body = (req.body ?? {}) as any;
+    const schema = z.object({
+      workspaceId: z.string().uuid(),
+      title: z.string().optional(),
+      modelConfig: z.object({ provider: z.string(), modelId: z.string(), params: z.record(z.any()).optional() }).default({ provider: 'openai', modelId: 'gpt-4o-mini' }),
+    });
+    const input = schema.parse(body);
+    const id = crypto.randomUUID();
+    const now = Date.now();
+    const th = { id, workspaceId: input.workspaceId, title: input.title, modelConfig: input.modelConfig, createdAt: now, updatedAt: now };
+    const parsed = zChatThread.parse(th);
+    threads.set(id, parsed);
+    return reply.code(201).send(parsed);
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return reply.code(400).send({ error: 'Invalid request data', details: error.errors });
+    }
+    return reply.code(500).send({ error: 'Internal server error' });
+  }
 });
 
 app.get('/threads/:id', async (req, reply) => {
