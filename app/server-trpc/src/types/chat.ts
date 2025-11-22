@@ -25,7 +25,7 @@ export const zChatMessage = z.object({
   threadId: z.string().uuid(),
   workspaceId: z.string().uuid(),
   role: zMessageRole,
-  text: z.string(),
+  text: z.string().min(1).max(10000), // Adjust max length as needed
   status: zMessageStatus,
   meta: z.record(z.any()).optional(),
   parentId: z.string().uuid().optional(),
