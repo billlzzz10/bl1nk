@@ -74,9 +74,18 @@ app.get('/messages', async (req) => {
 // SSE streaming demo (placeholder)
 app.get('/messages/stream/:id', async (req, reply) => {
   const id = (req.params as any).id as string;
-  reply.sse({ data: JSON.stringify({ id, delta: 'Hello', done: false }) });
-  setTimeout(() => reply.sse({ data: JSON.stringify({ id, delta: ' world', done: false }) }), 200);
-  setTimeout(() => reply.sse({ data: JSON.stringify({ id, done: true }) }), 400);
+  
+  req.raw.on('close', () => {
+    // Clean up any resources when client disconnects
+  });
+  
+  try {
+    reply.sse({ data: JSON.stringify({ id, delta: 'Hello', done: false }) });
+    setTimeout(() => reply.sse({ data: JSON.stringify({ id, delta: ' world', done: false }) }), 200);
+    setTimeout(() => reply.sse({ data: JSON.stringify({ id, done: true }) }), 400);
+  } catch (error) {
+    reply.log.error('SSE streaming error:', error);
+  }
 });
 
 // Export job stub
