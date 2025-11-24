@@ -9,7 +9,7 @@ await app.register(cors, {
   origin: process.env.ALLOWED_ORIGINS
     ? process.env.ALLOWED_ORIGINS.split(',')
     : true,
-  credentials: true,
+  credentials: Boolean(process.env.ALLOWED_ORIGINS),
 });
 await app.register(sse);
 
