@@ -1,4 +1,4 @@
-import Fastify from 'fastify';
+import crypto from 'node:crypto';
 import cors from '@fastify/cors';
 import sse from '@fastify/sse-v2';
 import { z } from 'zod';
