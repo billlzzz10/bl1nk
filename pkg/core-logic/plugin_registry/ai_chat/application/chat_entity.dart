@@ -115,7 +115,10 @@ class ChatFile {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ChatFile && other.filePath == filePath;
+      other is ChatFile && 
+      other.filePath == filePath &&
+      other.fileName == fileName &&
+      other.fileType == fileType;
 
   @override
 

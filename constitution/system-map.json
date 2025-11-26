@@ -1,0 +1,79 @@
+{
+  "description": "High-level system map for automated metadata checks.",
+  "domains": [
+    {
+      "id": "app",
+      "summary": "Client applications interfacing with the bl1nkOS services.",
+      "surfaces": [
+        {
+          "name": "client-desktop",
+          "stack": [
+            "Electron",
+            "TypeScript"
+          ],
+          "critical": true
+        },
+        {
+          "name": "client-web",
+          "stack": [
+            "Next.js",
+            "TypeScript"
+          ],
+          "critical": true
+        },
+        {
+          "name": "client-cli",
+          "stack": [
+            "Node.js"
+          ],
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "pkg",
+      "summary": "Shared logic and types reused across runtimes.",
+      "surfaces": [
+        {
+          "name": "core-logic",
+          "stack": [
+            "Dart"
+          ],
+          "critical": true
+        },
+        {
+          "name": "core-types",
+          "stack": [
+            "Dart"
+          ],
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "summary": "Infrastructure dependencies and integrations.",
+      "surfaces": [
+        {
+          "name": "redis",
+          "stack": [
+            "Redis"
+          ],
+          "critical": true
+        },
+        {
+          "name": "qdrant",
+          "stack": [
+            "Rust",
+            "Qdrant"
+          ],
+          "critical": true
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "checksum": "a0624625c60f65bff78f74ef912025788860e62056babb4a671fe3b05105f63a",
+    "updated": "2025-11-07T05:12:12.335Z"
+  }
+}

@@ -24,9 +24,9 @@ jobs:
       - name: Flutter pub get
         run: flutter pub get
 
-      # Temporarily skip analyze to unblock PR; keep tests running
-      # - name: Flutter analyze
-      #   run: flutter analyze .
+      - name: Flutter analyze
+        run: flutter analyze .
 
       - name: Flutter test (ENABLE_SHARE_UI=true)
         run: flutter test --dart-define=ENABLE_SHARE_UI=true
+

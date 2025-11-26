@@ -159,7 +159,14 @@ enum OnetimeShotType {
 const onetimeShotType = "OnetimeShotType";
 
 OnetimeShotType? onetimeMessageTypeFromMeta(Map<String, dynamic>? metadata) {
-  return metadata?[onetimeShotType] as OnetimeShotType?;
+  final value = metadata == null ? null : metadata[onetimeShotType];
+  if (value is OnetimeShotType) return value;
+  if (value is String) {
+    for (final e in OnetimeShotType.values) {
+      if (e.toString().split('.').last == value) return e;
+    }
+  }
+  return null;
 }
 
 enum LoadChatMessageStatus {

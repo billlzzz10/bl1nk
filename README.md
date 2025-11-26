@@ -152,3 +152,10 @@ npm start
 หมายเหตุ:
 - ค่าเริ่มต้นปุ่ม Share เป็น disabled + tooltip "Coming soon"
 - ตั้งค่าแฟลก `ENABLE_SHARE_UI=true` เพื่อเปิดเมนู Share/Export/Publish (placeholder)
+
+---
+
+## 7. ความปลอดภัย (Security)
+
+- [Operations Runbooks](doc/operations/index.md): รวมขั้นตอน Incident Response และงานบำรุงรักษา
+- [Metadata Maintenance Guide](doc/operations/metadata-maintenance.md): วิธีอัปเดต checksum/timestamp สำหรับไฟล์ระบบสำคัญ
