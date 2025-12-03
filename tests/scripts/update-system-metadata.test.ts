@@ -129,21 +129,21 @@ test('throws when includePaths contains unknown target', async () => {
 
 test('rejects path traversal attempts in CLI arguments', async () => {
   const { parseCliArgs } = await import('../../scripts/update-system-metadata.ts');
-  
+
   // Test relative path with .. segments
-  await assert.rejects(
+  assert.throws(
     () => parseCliArgs(['--path=../../../etc/passwd']),
     /must be a relative path without "\.\." segments/
   );
-  
+
   // Test absolute path
-  await assert.rejects(
+  assert.throws(
     () => parseCliArgs(['--path=/etc/passwd']),
     /must be a relative path without "\.\." segments/
   );
-  
+
   // Test paths parameter with traversal
-  await assert.rejects(
+  assert.throws(
     () => parseCliArgs(['--paths=valid.json,../../../etc/passwd']),
     /must contain relative paths without "\.\." segments/
   );
