@@ -2,7 +2,8 @@ import crypto from 'node:crypto';
 import cors from '@fastify/cors';
 import sse from '@fastify/sse-v2';
 import { z } from 'zod';
-import { zChatThread, zChatMessage, zExportRequest } from './types/chat.js';
+import { zChatThread, zChatMessage } from './types/chat.js';
+import { zExportRequest } from './types/share.js';
 
 const app = Fastify({ logger: true });
 await app.register(cors, { 
