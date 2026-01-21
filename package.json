@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@qwen-code/qwen-code": "^0.5.2",
+    "@qwen-code/qwen-code": "^0.6.0",
     "qwen-code": "^0.0.5"
   }
 }
