@@ -82,10 +82,13 @@ pnpm dev
 
 ## 4. ระบบจัดการเอกสารอัตโนมัติ (Automated Documentation System)
 
-### 📁 File Naming (R_DOC_002)
+### 📁 File Naming & Workflow (R_DOC_002)
 
-- เอกสาร: ตัวพิมพ์ใหญ่ทั้งหมด + ขีดล่าง และใส่เลขสองหลักนำหน้าเพื่อเรียงความสำคัญ → `01_MASTER_PLAN.md`, `03_GITHUB_WORKFLOW_AUTOMATION.md`
-- โค้ด: ใช้ kebab-case → `server-proxy.ts`, `core-logic.ts`
+- **เอกสาร**: ตัวพิมพ์ใหญ่ทั้งหมด + ขีดล่าง และใส่เลขสองหลักนำหน้าเพื่อเรียงความสำคัญ → `01_PROJECT_STATUS_AND_PLAN.md`, `07_WORK_TRACKING_MATRIX.md`
+- **โค้ด**: ใช้ kebab-case → `server-proxy.ts`, `core-logic.ts`
+- **Workflow**: ควบคุมผ่าน `.github/workflows/auto-project.yml` เพื่อตรวจสอบชื่อไฟล์และอัปเดต metadata อัตโนมัติ
+
+ดูรายละเอียดเพิ่มเติมที่ [07_WORK_TRACKING_MATRIX.md](doc/07_WORK_TRACKING_MATRIX.md)
 
 ### 📜 Changelog Structure (R_DOC_003)
 
