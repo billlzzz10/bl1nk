@@ -91,7 +91,6 @@ export function parseCliArgs(argv) {
             includePaths.add(trimmed);
           }
         });
-        });
         break;
       default:
         throw new Error(`Unknown option: ${flag}`);
